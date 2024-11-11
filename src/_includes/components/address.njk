@@ -1,21 +1,22 @@
 <address>
-  {# E.g., LinkedIn #}
+  {# Social Profiles #}
   {% for profile in basics.profiles %}
-  <a href="{{ profile.url }}">
-    {{ profile.network }}
-  </a>
+    <a href="{{ profile.url }}" class="{{ profile.network }}">
+      {{ profile.network }}
+    </a>
   {% endfor %}
 
-  {# E.g., personal website #}
+  {# Website #}
   {% if basics.url %}
-  <a href="https://{{ basics.url }}">
-    {{ basics.url }}
-  </a>
+    <a href="https://{{ basics.url }}" class="website">
+      {{ basics.url }}
+    </a>
   {% endif %}
 
+  {# Email #}
   {% if basics.email %}
-  <a href="mailto:{{ basics.email }}">
-    {{ basics.email }}
-  </a>
+    <a href="mailto:{{ basics.email }}" class="email">
+      {{ basics.email }}
+    </a>
   {% endif %}
 </address>
