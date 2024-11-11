@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    {% include "./assets/styles.css" %}
+  </style>
+  <title>
+    Resume of 
+    {{ resume.basics.name }}, 
+    {{ resume.basics.label }}
+  </title>
+</head>
+<body>
+  {% set basics = resume.basics %}
+  {% include "components/header.njk" %}
+
+  <main>
+    {% set summary = resume.basics.summary %}
+    {% include "components/summary.njk" %}
+
+    {% set work = resume.work %}
+    {% include "components/experience.njk" %}
+
+    {# Uncomment the following lines if education data is available #}
+    {# 
+      {% set education = resume.education %}
+      {% include "components/education.njk" %}
+    #}
+  </main>
+</body>
+
+</html>

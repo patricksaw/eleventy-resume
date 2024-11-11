@@ -1,0 +1,25 @@
+<section>
+  <h2>Experience</h2>
+  {% for work in resume.work %}
+    <section>
+      <header>
+        <h3>{{ work.position }}</h3>
+        <span>{{ work.name }}</span>
+        <span class="date">
+          {% if work.period %}
+            {{ work.period }}
+          {% else %}
+            {{ work.startDate }} &ndash;&nbsp;{{ work.endDate }}
+          {% endif %}
+        </span>
+      </header>
+      <ul>
+        {% for highlight in work.highlights %}
+          <li>
+            {{ highlight }}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</section>

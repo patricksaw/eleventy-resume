@@ -1,0 +1,23 @@
+<section>
+  <h2>Education</h2>
+  {% for education in resume.education %}
+    <section>
+      <header>
+        <h3>
+          {{ education.studyType }} in {{ education.area }}
+        </h3>
+        <span>
+          {{ education.institution }}
+          {% if education.focus %}
+          , <span class="focus">
+            Focus: {{ education.focus }}
+          </span>
+          {% endif %}
+        </span>
+        <span class="date">
+          {{ education.startDate }} &ndash; {{ education.endDate }}
+        </span>
+      </header>
+    </section>
+  {% endfor %}
+</section>

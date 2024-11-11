@@ -1,0 +1,9 @@
+<header>
+  <h1>
+    {{ basics.name }}
+    <br>
+    <span>{{ basics.label }}</span>
+  </h1>
+  {% set basics = basics %}
+  {% include "components/address.njk" %}
+</header>

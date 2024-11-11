@@ -4,13 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "build:css": "sass src/assets/styles.scss src/assets/styles.css --style=compressed",
+    "build": "npm run build:css && eleventy",
+    "start": "npm run build:css && eleventy --serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "jsonresume-theme-bufferbloat": "^1.0.2",
+    "jsonresume-theme-elegant": "^1.16.1",
+    "jsonresume-theme-even": "^0.23.0",
+    "jsonresume-theme-paper": "^0.5.0",
+    "jsonresume-theme-paper-plus-plus": "^0.5.1",
+    "jsonresume-theme-relaxed": "^0.1.11"
+  },
+  "devDependencies": {
+    "sass": "^1.80.6"
   }
 }
