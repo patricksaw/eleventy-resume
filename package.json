@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "sass src/assets/styles.scss src/assets/styles.css --style=compressed",
+    "dev:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --watch --postcss",
+    "build:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --postcss",
     "build": "npm run build:css && eleventy",
     "start": "npm run build:css && eleventy --serve"
+    
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,8 @@
     "jsonresume-theme-relaxed": "^0.1.11"
   },
   "devDependencies": {
-    "sass": "^1.80.6"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.48",
+    "tailwindcss": "^3.4.14"
   }
 }

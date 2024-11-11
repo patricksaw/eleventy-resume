@@ -2,7 +2,7 @@ const { exec } = require("child_process");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.setLayoutsDirectory("_layouts");
-  eleventyConfig.addPassthroughCopy("src/assets/img");
+  eleventyConfig.addPassthroughCopy("src/assets");
   // Watch for changes in SCSS files and run the build:css command
   eleventyConfig.addWatchTarget("src/assets/styles.scss");
 
@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
       });
     }
   });
+  
   return {
     dir: {
       input: "src",
