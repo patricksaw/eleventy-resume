@@ -1,0 +1,15 @@
+<section class="section skills-section">
+  <h2 class="section-title">Skills</h2>
+  <section class="section-content skills-list">
+    {% for skill in skills %}
+      <div>
+        <header>
+          <h3>{{ skill.name }}</h3>
+        </header>
+        {% for keyword in skill.keywords %}
+          <p>{{ keyword }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+</section>

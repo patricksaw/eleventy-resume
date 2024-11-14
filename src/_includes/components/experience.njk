@@ -1,25 +1,33 @@
-<section>
-  <h2>Experience</h2>
-  {% for work in resume.work %}
-    <section>
-      <header>
-        <h3>{{ work.position }}</h3>
-        <span>{{ work.name }}</span>
-        <span class="date">
-          {% if work.period %}
-            {{ work.period }}
-          {% else %}
-            {{ work.startDate }} &ndash;&nbsp;{{ work.endDate }}
-          {% endif %}
-        </span>
-      </header>
-      <ul>
-        {% for highlight in work.highlights %}
-          <li>
-            {{ highlight }}
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-  {% endfor %}
+<section class="section experience-section">
+  <h2 class="section-title">Experience</h2>
+  <div class="section-content">
+    {% for work in resume.work %}
+      {% if work.startDate and not work.startDate | isOldExperience %}
+        <section class="job-entry">
+          <header class="job-header">
+            <h1 class="company-name">{{ work.name }}</h1>
+            <h2 class="position-title">{{ work.position }}</h2>
+            <span class="job-date">
+              {% if work.startDate and work.endDate %}
+                {{ work.startDate }} &ndash; {{ work.endDate }}
+              {% endif %}
+            </span>
+          </header>
+          <ul>
+            {% for highlight in work.highlights %}
+              <li class="list-disc list-inside striped">
+                {{ highlight }}
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    {% endfor %}
+    
+    {% if earliestYear > 0 %}
+      <section>
+        <span class="centered">Experience prior to {{ earliestYear }} available on request</span>
+      </section>
+    {% endif %}
+  </div>
 </section>

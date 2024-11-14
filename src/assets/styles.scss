@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Alternating background colors for list items */
+li:nth-child(odd) {
+  @apply bg-gray-100;
+}
+li:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+/* Base styles */
 html {
   font-size: 14pt;
   box-sizing: border-box;
@@ -13,13 +22,7 @@ html {
   box-sizing: inherit;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
+/* Print styles */
 @media print {
   @page {
     margin: 0.5in;
@@ -30,14 +33,14 @@ html {
   }
 
   body {
-    margin-block: 0 !important;
+    margin: 0 !important;
   }
 
   ul {
-    padding-inline-start: 1.25rem !important;
+    padding-left: 1.25rem !important;
 
     li {
-      padding-inline-start: 0.25rem !important;
+      padding-left: 0.25rem !important;
     }
   }
 }
@@ -46,196 +49,134 @@ a {
   color: inherit;
 }
 
+.striped {
+  background-color: gray;
+}
+
+/* Main body styling */
 body {
-  max-width: 55rem;
-  margin-inline: auto;
-  margin-block: 0.5rem 2rem;
+  @apply max-w-screen-lg mx-auto my-2 p-4 font-sans;
 
   & > header {
-    display: flex;
-    padding: 0.5rem;
-    flex-direction: row;
-    flex-wrap: wrap;
+    @apply flex flex-wrap p-2;
 
     & > h1 {
-      font-size: 2rem;
-      font-weight: bolder;
+      @apply text-3xl font-bold flex-1;
 
-      flex: 1 0 auto;
       & > span {
-        font-size: 1.1rem;
-        font-weight: 300;
+        @apply text-lg font-light;
       }
     }
 
     & > address {
-      flex: 1 0 auto;
-      align-self: end;
-      text-align: end;
-
-      font-style: normal;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed justify-self-end; /* Aligns address to the right */
 
       & > a {
-        display: flex;
-        align-items: center;
-        white-space: normal;
-        gap: 0.5rem;
+        @apply flex items-center gap-2;
 
-        /* Add SVG icons to the left of each link */
-        &.github::before {
-          content: "";
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          background-image: url('/assets/img/github.svg');
-          background-size: contain;
-          margin-right: 5px;
-        }
-
-        &.linkedin::before {
-          content: "";
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          background-image: url('/assets/img/linkedin.svg');
-          background-size: contain;
-          margin-right: 5px;
-        }
-
-        &.website::before {
-          content: "";
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          background-image: url('/assets/img/website.svg');
-          background-size: contain;
-          margin-right: 5px;
-        }
-
+        /* SVG icon styling */
+        &.github::before,
+        &.linkedin::before,
+        &.website::before,
         &[href^="mailto:"]::before {
           content: "";
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          background-image: url('/assets/img/email.svg');
-          background-size: contain;
-          margin-right: 5px;
+          @apply inline-block w-4 h-4 bg-contain mr-1;
         }
 
-        &::after {
-          margin-inline-start: 0.5rem;
-          display: inline-block;
-          position: relative;
-          right: 0.5pt;
+        /* Set specific icons for each link */
+        &.github::before {
+          background-image: url('/assets/img/github.svg');
         }
+        
+        &.linkedin::before {
+          background-image: url('/assets/img/linkedin.svg');
+        }
+        
+        &.website::before {
+          background-image: url('/assets/img/website.svg');
+        }
+        
+        &[href^="mailto:"]::before {
+          background-image: url('/assets/img/email.svg');
+        }      
       }
     }
   }
 
   & > main {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    row-gap: 0.75rem;
+    @apply grid gap-y-3;
 
-    & > section {
-      grid-column: 1 / 3;
-      width: 100%;
+    /* Wrapper for each section */
+    & > .section {
+      @apply grid grid-cols-[8rem_1fr] gap-x-4 border-t-2 border-blue-900 pt-3;
 
-      display: grid;
-      grid-template-columns: subgrid;
-      justify-items: stretch;
-      align-items: start;
-
-      row-gap: 0.75rem;
-      column-gap: 1rem;
-
-      border-block-start: 2pt solid #0E2181;
-      padding-block-start: 0.75rem;
-      padding-inline: 0.5rem;
-      margin-inline: 0.25rem;
-
-      line-height: 1.4;
-
-      & > h2 {
-        grid-column: 1 / span 1;
-        margin-block-start: 0.2rem;
-        line-height: 1;
-        font-size: 1.1rem;
-        font-weight: lighter;
-        text-transform: uppercase;
+      /* Title column for alignment to the left */
+      & > .section-title {
+        @apply text-lg font-light uppercase;
       }
 
-      & > p,
-      & > section {
-        grid-column: 2 / 3;
+      /* Content column for each section */
+      & > .section-content {
+        @apply col-span-1;
       }
 
-      & > section {
-        display: grid;
-        gap: 0.25rem;
+      /* Skills section styling */
+      &.skills-section .section-content {
+        @apply grid grid-cols-2 gap-4;
 
-        & > header {
-          display: grid;
-          grid-template-columns: max-content 1fr;
-          column-gap: 0.25rem;
+        & > div {
+          @apply flex flex-col;
 
-          & > h3 {
-            grid-column: 1 / span 1;
-            font-size: 1rem;
-            font-weight: bolder;
+          & > header {
+            @apply font-semibold mb-1 text-base;
           }
 
-          & > span {
-            grid-column: 1;
-            font-weight: lighter;
-
-            & > .focus {
-              text-transform: lowercase;
-            }
-
-            &.date {
-              grid-column: 2;
-              grid-row: 1;
-              justify-self: end;
-            }
+          & > p {
+            @apply text-sm leading-snug;
           }
         }
+      }
 
-        & > ul {
-          padding-inline-start: 1rem;
+      /* Experience section specific styling */
+      &.experience-section .section-content {
+        & > section {
+          @apply grid gap-2 mb-4 pb-2;
+
+          & > header {
+            @apply grid grid-cols-[1fr_auto] items-baseline;
+
+            /* Company Name */
+            & > h1 {
+              @apply text-xl font-bold;
+            }
+
+            /* Position Title */
+            & > h2 {
+              @apply text-base italic text-gray-700;
+            }
+
+            /* Date */
+            & > .date {
+              @apply text-sm font-light text-right text-gray-600;
+            }
+          }
+
+          & > ul {
+            @apply pl-5 list-disc;
+
+            & > li {
+              @apply text-sm leading-snug;
+            }
+          }
         }
       }
     }
   }
 }
 
-@media screen and (max-width: 50rem) {
-  body {
-    main {
-      & > section {
-        & > h2 {
-          grid-column-end: span 2;
-          justify-self: center;
-          font-size: 1.25rem;
-        }
-
-        & > p,
-        & > section {
-          grid-column-start: 2;
-
-          & > header {
-            & > h3 {
-              grid-column-end: span 2;
-            }
-
-            & > span.date {
-              grid-row: 2;
-            }
-          }
-        }
-      }
-    }
+/* Responsive adjustments */
+@media screen and (max-width: 50em) {
+  body > main > .section > .section-title {
+    @apply text-center text-lg col-span-2;
   }
 }

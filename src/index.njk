@@ -19,6 +19,9 @@
     {% set summary = resume.basics.summary %}
     {% include "components/summary.njk" %}
 
+    {% set skills = resume.skills %}
+    {% include "components/skills.njk" %}
+
     {% set work = resume.work %}
     {% include "components/experience.njk" %}
 

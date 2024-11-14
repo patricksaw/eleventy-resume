@@ -2,7 +2,7 @@
   {# Social Profiles #}
   {% for profile in basics.profiles %}
     <a href="{{ profile.url }}" class="{{ profile.network }}">
-      {{ profile.network }}
+      {{ profile.display }}
     </a>
   {% endfor %}
 
