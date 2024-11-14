@@ -1,15 +1,16 @@
 {
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "build:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --watch --postcss",
+    "build": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --postcss && eleventy",
+    "start": "npm run build:css && eleventy --serve"
+  },
   "name": "psaweikis-resume-eleventy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --watch --postcss",
-    "build:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --postcss",
-    "build": "npm run build:css && eleventy",
-    "start": "npm run build:css && eleventy --serve"
-    
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,6 +24,10 @@
     "jsonresume-theme-relaxed": "^0.1.11"
   },
   "devDependencies": {
+    "@edgio/cli": "^7.13.13",
+    "@edgio/connectors": "^7.13.13",
+    "@edgio/core": "^7.13.13",
+    "@edgio/prefetch": "^7.13.13",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.48",
     "tailwindcss": "^3.4.14"

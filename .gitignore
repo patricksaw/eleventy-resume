@@ -2,3 +2,5 @@ node_modules/
 public/
 **/.DS_Store
 src/_data/resume.json
+# Edgio generated build directory
+.edgio
