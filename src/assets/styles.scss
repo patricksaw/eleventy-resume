@@ -10,6 +10,32 @@ li:nth-child(even) {
   @apply bg-gray-50;
 }
 
+/* Button styling */
+.print-button-section {
+  @apply flex justify-center mt-6;
+
+  #printButton {
+    @apply px-4 py-2 bg-blue-600 text-white rounded shadow-lg hover:bg-blue-700 transition duration-300;
+
+    /* Hide the button when printing */
+    @media print {
+      display: none;
+    }
+  }
+}
+
+
+/* Centered Section Styling */
+.centered-section {
+  @apply flex justify-center items-center mt-4; /* Ensures the section is centered horizontally and vertically */
+}
+
+/* Centered Text Styling */
+.centered {
+  @apply italic text-center text-gray-600; /* Italicize, center-align text, and use a subtle gray color */
+}
+
+
 /* Base styles */
 html {
   font-size: 14pt;
@@ -69,8 +95,8 @@ body {
     }
 
     & > address {
-      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed justify-self-end; /* Aligns address to the right */
-
+      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed ml-auto; /* Aligns address to the right */
+      
       & > a {
         @apply flex items-center gap-2;
 
@@ -170,9 +196,62 @@ body {
           }
         }
       }
+
+      /* Projects section styling */
+      &.projects-section .section-content {
+        & > .project-entry {
+          @apply mb-6 pb-4 border-b border-gray-300;
+
+          /* Project Header */
+          & .project-header {
+            @apply flex justify-between items-baseline mb-2;
+
+            & .project-name {
+              @apply text-xl font-bold;
+            }
+
+            & .project-date {
+              @apply text-sm font-light text-gray-600;
+            }
+          }
+
+          /* Project Description */
+          & .project-description {
+            @apply text-sm mb-2;
+          }
+
+          /* Project Highlights */
+          & .project-highlights ul {
+            @apply list-disc pl-5;
+
+            & > li {
+              @apply text-sm leading-snug mb-1;
+            }
+          }
+
+          /* Project Link */
+          & .project-link {
+            @apply mt-2;
+
+            & a {
+              @apply text-blue-600 underline;
+            }
+          }
+
+          /* Project Image */
+          & .project-image {
+            @apply mt-4;
+
+            img {
+              @apply w-full h-auto rounded shadow-lg;
+            }
+          }
+        }
+      }
     }
   }
 }
+
 
 /* Responsive adjustments */
 @media screen and (max-width: 50em) {

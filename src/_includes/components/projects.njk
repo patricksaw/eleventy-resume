@@ -1,0 +1,36 @@
+<section class="section projects-section">
+  <h2 class="section-title">Projects</h2>
+  <div class="section-content">
+    {% for project in projects %}
+      <section class="project-entry">
+        <header class="project-header">
+          <h1 class="project-name">{{ project.name }}</h1>
+          <span class="project-date">
+            {% if project.startDate and project.endDate %}
+              {{ project.startDate }} &ndash; {{ project.endDate }}
+            {% endif %}
+          </span>
+        </header>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="project-highlights">
+          <ul>
+            {% for highlight in project.highlights %}
+              <li>{{ highlight }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        {% if project.url != "Not Public" %}
+          <p class="project-link">
+            <a href="{{ project.url }}" target="_blank">Project Media</a>
+          </p>
+        {% endif %}
+
+        <div class="project-image">
+          <img src="/assets/img/project-image/{{ project.image }}" alt="{{ project.name }} screenshot" />
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</section>

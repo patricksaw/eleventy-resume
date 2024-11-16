@@ -578,6 +578,78 @@ li:nth-child(even) {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+/* Button styling */
+
+.print-button-section {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  #printButton {
+    border-radius: 0.25rem;
+  }
+  #printButton {
+    --tw-bg-opacity: 1;
+    background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  }
+  #printButton {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #printButton {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  #printButton {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+  #printButton {
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  #printButton {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  #printButton {
+    transition-duration: 300ms;
+  }
+  #printButton:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+  }
+  #printButton {
+    /* Hide the button when printing */
+    @media print {
+      display: none;
+    }
+  }
+}
+
+/* Centered Section Styling */
+
+.centered-section {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ensures the section is centered horizontally and vertically */
+}
+
+/* Centered Text Styling */
+
+.centered {
+  text-align: center;
+  font-style: italic;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+  /* Italicize, center-align text, and use a subtle gray color */
+}
+
 /* Base styles */
 
 html {
@@ -662,13 +734,13 @@ body {
       }
     }
     & > address {
+      margin-left: auto;
+    }
+    & > address {
       flex: 1 1 0%;
     }
     & > address {
       align-self: flex-end;
-    }
-    & > address {
-      justify-self: end;
     }
     & > address {
       text-align: right;
@@ -903,6 +975,117 @@ body {
             }
             & > li {
               line-height: 1.375;
+            }
+          }
+        }
+      }
+      /* Projects section styling */
+      &.projects-section .section-content {
+        & > .project-entry {
+          margin-bottom: 1.5rem;
+        }
+        & > .project-entry {
+          border-bottom-width: 1px;
+        }
+        & > .project-entry {
+          --tw-border-opacity: 1;
+          border-color: rgb(209 213 219 / var(--tw-border-opacity));
+        }
+        & > .project-entry {
+          padding-bottom: 1rem;
+        }
+        & > .project-entry {
+          /* Project Header */
+          & .project-header {
+            margin-bottom: 0.5rem;
+          }
+          & .project-header {
+            display: flex;
+          }
+          & .project-header {
+            align-items: baseline;
+          }
+          & .project-header {
+            justify-content: space-between;
+          }
+          & .project-header {
+            & .project-name {
+              font-size: 1.25rem;
+              line-height: 1.75rem;
+            }
+            & .project-name {
+              font-weight: 700;
+            }
+            & .project-date {
+              font-size: 0.875rem;
+              line-height: 1.25rem;
+            }
+            & .project-date {
+              font-weight: 300;
+            }
+            & .project-date {
+              --tw-text-opacity: 1;
+              color: rgb(75 85 99 / var(--tw-text-opacity));
+            }
+          }
+          /* Project Description */
+          & .project-description {
+            margin-bottom: 0.5rem;
+          }
+          & .project-description {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+          }
+          /* Project Highlights */
+          & .project-highlights ul {
+            list-style-type: disc;
+          }
+          & .project-highlights ul {
+            padding-left: 1.25rem;
+          }
+          & .project-highlights ul {
+            & > li {
+              margin-bottom: 0.25rem;
+            }
+            & > li {
+              font-size: 0.875rem;
+              line-height: 1.25rem;
+            }
+            & > li {
+              line-height: 1.375;
+            }
+          }
+          /* Project Link */
+          & .project-link {
+            margin-top: 0.5rem;
+          }
+          & .project-link {
+            & a {
+              --tw-text-opacity: 1;
+              color: rgb(37 99 235 / var(--tw-text-opacity));
+            }
+            & a {
+              text-decoration-line: underline;
+            }
+          }
+          /* Project Image */
+          & .project-image {
+            margin-top: 1rem;
+          }
+          & .project-image {
+            img {
+              height: auto;
+            }
+            img {
+              width: 100%;
+            }
+            img {
+              border-radius: 0.25rem;
+            }
+            img {
+              --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+              --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+              box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
           }
         }
