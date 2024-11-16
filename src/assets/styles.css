@@ -651,7 +651,6 @@ li:nth-child(even) {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Ensures the section is centered horizontally and vertically */
 }
 
 /* Centered Text Styling */
@@ -661,7 +660,6 @@ li:nth-child(even) {
   font-style: italic;
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-  /* Italicize, center-align text, and use a subtle gray color */
 }
 
 /* Base styles */
@@ -770,7 +768,6 @@ body {
       line-height: 1.625;
     }
     & > address {
-      /* Aligns address to the right */
       & > a {
         display: flex;
       }
@@ -897,21 +894,51 @@ body {
         }
         & > div {
           & > header {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
           }
           & > header {
-            font-size: 1rem;
-            line-height: 1.5rem;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
           }
           & > header {
             font-weight: 600;
+          }
+          & > header {
+            /* Bold and slightly larger for section titles */
           }
           & > p {
             font-size: 0.875rem;
             line-height: 1.25rem;
           }
           & > p {
-            line-height: 1.375;
+            line-height: 1.625;
+          }
+          & > p {
+            &:nth-child(odd) {
+              --tw-bg-opacity: 1;
+              background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+            }
+            &:nth-child(odd) {
+              /* Light gray for odd lines */
+            }
+            &:nth-child(even) {
+              --tw-bg-opacity: 1;
+              background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+            }
+            &:nth-child(even) {
+              /* Slightly lighter gray for even lines */
+            }
+          }
+          & > p {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+          }
+          & > p {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+          }
+          & > p {
+            /* Add padding for readability */
           }
         }
       }
@@ -989,6 +1016,100 @@ body {
             }
             & > li {
               line-height: 1.375;
+            }
+          }
+        }
+        /* Adjust for mobile portrait view */
+        @media screen and (max-width: 768px) {
+          & > section {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+          }
+
+          & > section {
+            /* Switch to a single-column layout */
+            & > header {
+              display: flex;
+            }
+            & > header {
+              flex-direction: column;
+            }
+            & > header {
+              align-items: flex-start;
+            }
+            & > header {
+              /* Stack content vertically and align left */
+              /* Company Name */
+              & > h1 {
+                margin-bottom: 0.25rem;
+              }
+              & > h1 {
+                font-size: 1.125rem;
+                line-height: 1.75rem;
+              }
+              & > h1 {
+                font-weight: 700;
+              }
+              & > h1 {
+                /* Bold and slightly smaller for mobile */
+              }
+              /* Position Title */
+              & > h2 {
+                margin-bottom: 0.25rem;
+              }
+              & > h2 {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+              }
+              & > h2 {
+                font-style: italic;
+              }
+              & > h2 {
+                --tw-text-opacity: 1;
+                color: rgb(55 65 81 / var(--tw-text-opacity));
+              }
+              & > h2 {
+                /* Smaller and italicized for consistency */
+              }
+              /* Date */
+              & > .date {
+                margin-bottom: 0.5rem;
+              }
+              & > .date {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+              }
+              & > .date {
+                font-weight: 300;
+              }
+              & > .date {
+                --tw-text-opacity: 1;
+                color: rgb(75 85 99 / var(--tw-text-opacity));
+              }
+              & > .date {
+                /* Align dates with the rest */
+              }
+            }
+            & > ul {
+              list-style-type: disc;
+            }
+            & > ul {
+              padding-left: 1.25rem;
+            }
+            & > ul {
+              /* Keep bulleted lists consistent */
+              & > li {
+                margin-bottom: 0.25rem;
+              }
+              & > li {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+              }
+              & > li {
+                line-height: 1.625;
+              }
+              & > li {
+                /* Maintain spacing and readability */
+              }
             }
           }
         }
@@ -1110,11 +1231,109 @@ body {
 
 /* Responsive adjustments */
 
-@media screen and (max-width: 50em) {
-  body > main > .section > .section-title {
-    grid-column: span 2 / span 2;
-    text-align: center;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12pt;
+    /* Reduce font size on smaller screens */
+  }
+
+  body {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Ensure full width on mobile */
+  }
+
+  /* Adjust header for mobile */
+
+  & > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > h1 {
+      margin-bottom: 0.5rem;
+    }
+    & > h1 {
+      text-align: center;
+    }
+    & > address {
+      width: 100%;
+    }
+    & > address {
+      text-align: center;
+    }
+    & > address {
+      /* Center align address */
+    }
+  }
+
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Add padding to content */
+  }
+
+  /* Adjust sections for mobile */
+
+  .section {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 1rem;
+    & > .section-title {
+      text-align: center;
+    }
+    & > .section-content {
+      grid-column: span 1 / span 1;
+    }
+    & > .section-content {
+      /* Ensure full width content */
+    }
+    .skills-section .section-content {
+      display: grid;
+    }
+    .skills-section .section-content {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .skills-section .section-content {
+      /* Single column for skills on mobile */
+    }
+    .skills-section .section-content > div {
+      border-top-width: 1px;
+    }
+    .skills-section .section-content > div {
+      padding-top: 1rem;
+    }
+    .skills-section .section-content > div {
+      /* Add separation between items */
+    }
+    .skills-section .section-content > div > header {
+      text-align: center;
+    }
+    .skills-section .section-content > div > header {
+      /* Center-align section headers on mobile */
+    }
+    .skills-section .section-content > div > p {
+      text-align: left;
+    }
+    .skills-section .section-content > div > p {
+      /* Keep content left-aligned */
+    }
+    .projects-section .project-entry {
+      & .project-header {
+        flex-direction: column;
+      }
+      & .project-header {
+        text-align: center;
+      }
+      & .project-header {
+        /* Stack project name and date */
+      }
+      & .project-highlights ul {
+        padding-left: 1rem;
+      }
+      & .project-highlights ul {
+        /* Adjust padding for mobile */
+      }
+    }
   }
 }

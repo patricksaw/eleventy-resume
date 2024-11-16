@@ -39,14 +39,13 @@ li:nth-child(even) {
 
 /* Centered Section Styling */
 .centered-section {
-  @apply flex justify-center items-center mt-4; /* Ensures the section is centered horizontally and vertically */
+  @apply flex justify-center items-center mt-4;
 }
 
 /* Centered Text Styling */
 .centered {
-  @apply italic text-center text-gray-600; /* Italicize, center-align text, and use a subtle gray color */
+  @apply italic text-center text-gray-600;
 }
-
 
 /* Base styles */
 html {
@@ -107,8 +106,8 @@ body {
     }
 
     & > address {
-      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed ml-auto; /* Aligns address to the right */
-      
+      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed ml-auto;
+
       & > a {
         @apply flex items-center gap-2;
 
@@ -125,18 +124,18 @@ body {
         &.github::before {
           background-image: url('/assets/img/github.svg');
         }
-        
+
         &.linkedin::before {
           background-image: url('/assets/img/linkedin.svg');
         }
-        
+
         &.website::before {
           background-image: url('/assets/img/website.svg');
         }
-        
+
         &[href^="mailto:"]::before {
           background-image: url('/assets/img/email.svg');
-        }      
+        }
       }
     }
   }
@@ -166,11 +165,21 @@ body {
           @apply flex flex-col;
 
           & > header {
-            @apply font-semibold mb-1 text-base;
+            @apply font-semibold mb-2 text-lg; /* Bold and slightly larger for section titles */
           }
 
           & > p {
-            @apply text-sm leading-snug;
+            @apply text-sm leading-relaxed;
+
+            &:nth-child(odd) {
+              @apply bg-gray-100; /* Light gray for odd lines */
+            }
+
+            &:nth-child(even) {
+              @apply bg-gray-50; /* Slightly lighter gray for even lines */
+            }
+
+            @apply px-2 py-1; /* Add padding for readability */
           }
         }
       }
@@ -204,6 +213,39 @@ body {
 
             & > li {
               @apply text-sm leading-snug;
+            }
+          }
+        }
+
+        /* Adjust for mobile portrait view */
+        @media screen and (max-width: 768px) {
+          & > section {
+            @apply grid-cols-1; /* Switch to a single-column layout */
+
+            & > header {
+              @apply flex flex-col items-start; /* Stack content vertically and align left */
+
+              /* Company Name */
+              & > h1 {
+                @apply text-lg font-bold mb-1; /* Bold and slightly smaller for mobile */
+              }
+
+              /* Position Title */
+              & > h2 {
+                @apply text-sm italic text-gray-700 mb-1; /* Smaller and italicized for consistency */
+              }
+
+              /* Date */
+              & > .date {
+                @apply text-sm font-light text-gray-600 mb-2; /* Align dates with the rest */
+              }
+            }
+
+            & > ul {
+              @apply pl-5 list-disc; /* Keep bulleted lists consistent */
+              & > li {
+                @apply text-sm leading-relaxed mb-1; /* Maintain spacing and readability */
+              }
             }
           }
         }
@@ -264,10 +306,69 @@ body {
   }
 }
 
-
 /* Responsive adjustments */
-@media screen and (max-width: 50em) {
-  body > main > .section > .section-title {
-    @apply text-center text-lg col-span-2;
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12pt; /* Reduce font size on smaller screens */
+  }
+
+  body {
+    @apply max-w-full px-4; /* Ensure full width on mobile */
+  }
+
+  /* Adjust header for mobile */
+  & > header {
+    @apply flex flex-col items-center;
+
+    & > h1 {
+      @apply text-center mb-2;
+    }
+
+    & > address {
+      @apply text-center w-full; /* Center align address */
+    }
+  }
+
+  main {
+    @apply px-4; /* Add padding to content */
+  }
+
+  /* Adjust sections for mobile */
+  .section {
+    @apply grid grid-cols-1 gap-y-4;
+
+    & > .section-title {
+      @apply text-center;
+    }
+
+    & > .section-content {
+      @apply col-span-1; /* Ensure full width content */
+    }
+
+    .skills-section .section-content {
+      @apply grid grid-cols-1; /* Single column for skills on mobile */
+    }
+
+    .skills-section .section-content > div {
+      @apply border-t pt-4; /* Add separation between items */
+    }
+
+    .skills-section .section-content > div > header {
+      @apply text-center; /* Center-align section headers on mobile */
+    }
+
+    .skills-section .section-content > div > p {
+      @apply text-left; /* Keep content left-aligned */
+    }
+
+    .projects-section .project-entry {
+      & .project-header {
+        @apply flex-col text-center; /* Stack project name and date */
+      }
+
+      & .project-highlights ul {
+        @apply pl-4; /* Adjust padding for mobile */
+      }
+    }
   }
 }
