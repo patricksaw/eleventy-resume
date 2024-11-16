@@ -630,6 +630,20 @@ li:nth-child(even) {
   }
 }
 
+/* Print pagination control */
+
+.page-break-before {
+  page-break-before: always;
+}
+
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
+}
+
 /* Centered Section Styling */
 
 .centered-section {
@@ -667,11 +681,11 @@ html {
 
 @media print {
   @page {
-    margin: 0.5in;
+    margin: 0.25in;
   }
 
   html {
-    font-size: 10pt;
+    font-size: 8pt;
   }
 
   body {

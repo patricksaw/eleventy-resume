@@ -3,7 +3,7 @@
   <div class="section-content">
     {% for work in resume.work %}
       {% if work.startDate and not work.startDate | isOldExperience %}
-        <section class="job-entry">
+        <section class="job-entry page-break-inside-avoid">
           <header class="job-header">
             <h1 class="company-name">{{ work.name }}</h1>
             <h2 class="position-title">{{ work.position }}</h2>
