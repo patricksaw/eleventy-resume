@@ -47,7 +47,8 @@ body {
 
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           content: "";
           @apply inline-block w-4 h-4 bg-contain mr-1;
@@ -63,6 +64,10 @@ body {
 
         &.website::before {
           background-image: url('/assets/img/website.svg');
+        }
+
+        &.phone::before {
+          background-image: url('/assets/img/phone.svg');
         }
 
         &[href^="mailto:"]::before {

@@ -659,37 +659,43 @@ body {
       & > a {
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           content: "";
         }
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           margin-right: 0.25rem;
         }
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           display: inline-block;
         }
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           height: 1rem;
         }
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           width: 1rem;
         }
         &.github::before,
         &.linkedin::before,
-        &.website::before,
+        &.website::before,  
+        &.phone::before,      
         &[href^="mailto:"]::before {
           background-size: contain;
         }
@@ -701,6 +707,9 @@ body {
         }
         &.website::before {
           background-image: url('/assets/img/website.svg');
+        }
+        &.phone::before {
+          background-image: url('/assets/img/phone.svg');
         }
         &[href^="mailto:"]::before {
           background-image: url('/assets/img/email.svg');

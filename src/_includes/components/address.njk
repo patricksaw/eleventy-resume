@@ -19,4 +19,11 @@
       {{ basics.email }}
     </a>
   {% endif %}
+
+  {# Phone #}
+  {% if basics.phone %}
+    <a href="tel:{{ basics.phone }}" class="phone">
+      {{ basics.phone }}
+    </a>
+  {% endif %}  
 </address>
