@@ -2,54 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Alternating background colors for list items */
-li:nth-child(odd) {
-  @apply bg-gray-100;
-}
-li:nth-child(even) {
-  @apply bg-gray-50;
-}
-
-/* Button styling */
-.print-button-section {
-  @apply flex justify-center mt-6;
-
-  #printButton {
-    @apply px-4 py-2 bg-blue-600 text-white rounded shadow-lg hover:bg-blue-700 transition duration-300;
-
-    /* Hide the button when printing */
-    @media print {
-      display: none;
-    }
-  }
-}
-
-/* Print pagination control */
-.page-break-before {
-  page-break-before: always;
-}
-
-.page-break-after {
-  page-break-after: always;
-}
-
-.page-break-inside-avoid {
-  page-break-inside: avoid;
-}
-
-/* Centered Section Styling */
-.centered-section {
-  @apply flex justify-center items-center mt-4;
-}
-
-/* Centered Text Styling */
-.centered {
-  @apply italic text-center text-gray-600;
-}
-
-/* Base styles */
 html {
-  font-size: 14pt;
+  font-size: 12pt;
   box-sizing: border-box;
 }
 
@@ -57,29 +11,6 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-/* Print styles */
-@media print {
-  @page {
-    margin: 0.25in;
-  }
-
-  html {
-    font-size: 8pt;
-  }
-
-  body {
-    margin: 0 !important;
-  }
-
-  ul {
-    padding-left: 1.25rem !important;
-
-    li {
-      padding-left: 0.25rem !important;
-    }
-  }
 }
 
 a {
@@ -90,28 +21,30 @@ a {
   background-color: gray;
 }
 
-/* Main body styling */
 body {
-  @apply max-w-screen-lg mx-auto my-2 p-4 font-sans;
+  @apply max-w-full px-2 my-2 p-4 font-sans;
 
   & > header {
-    @apply flex flex-wrap p-2;
+    @apply grid grid-cols-1 gap-4 p-2;
 
     & > h1 {
-      @apply text-3xl font-bold flex-1;
+      @apply text-2xl font-bold;
 
       & > span {
-        @apply text-lg font-light;
+        @apply text-base font-light;
       }
     }
 
+    & > h2 {
+      @apply text-lg font-normal text-gray-700;
+    }
+
     & > address {
-      @apply flex-1 self-end text-right not-italic text-sm leading-relaxed ml-auto;
+      @apply w-full not-italic text-sm leading-relaxed;
 
       & > a {
         @apply flex items-center gap-2;
 
-        /* SVG icon styling */
         &.github::before,
         &.linkedin::before,
         &.website::before,
@@ -120,7 +53,6 @@ body {
           @apply inline-block w-4 h-4 bg-contain mr-1;
         }
 
-        /* Set specific icons for each link */
         &.github::before {
           background-image: url('/assets/img/github.svg');
         }
@@ -141,140 +73,113 @@ body {
   }
 
   & > main {
-    @apply grid gap-y-3;
+    @apply grid gap-y-3 px-2;
 
-    /* Wrapper for each section */
     & > .section {
-      @apply grid grid-cols-[8rem_1fr] gap-x-4 border-t-2 border-blue-900 pt-3;
+      @apply grid grid-cols-1 gap-y-2 border-t-2 border-blue-900 pt-3;
 
-      /* Title column for alignment to the left */
       & > .section-title {
-        @apply text-lg font-light uppercase;
+        @apply text-xl font-semibold w-full border-b border-gray-300 pb-2 mb-4;
       }
 
-      /* Content column for each section */
       & > .section-content {
-        @apply col-span-1;
+        @apply w-full;
       }
 
-      /* Skills section styling */
       &.skills-section .section-content {
-        @apply grid grid-cols-2 gap-4;
+        @apply grid grid-cols-1;
 
         & > div {
           @apply flex flex-col;
 
           & > header {
-            @apply font-semibold mb-2 text-lg; /* Bold and slightly larger for section titles */
+            @apply font-semibold mb-2 text-lg text-left;
           }
 
           & > p {
-            @apply text-sm leading-relaxed;
+            @apply text-sm text-left px-2 py-1 leading-none;
 
             &:nth-child(odd) {
-              @apply bg-gray-100; /* Light gray for odd lines */
+              @apply bg-gray-100;
             }
 
             &:nth-child(even) {
-              @apply bg-gray-50; /* Slightly lighter gray for even lines */
+              @apply bg-gray-50;
             }
-
-            @apply px-2 py-1; /* Add padding for readability */
           }
         }
       }
 
-      /* Experience section specific styling */
       &.experience-section .section-content {
         & > section {
-          @apply grid gap-2 mb-4 pb-2;
-
+          @apply grid mb-4 pb-2;
+          
+          &:nth-child(odd) {
+            @apply bg-gray-100;
+          }
+      
+          &:nth-child(even) {
+            @apply bg-gray-50;
+          }
+      
+          @apply p-4 rounded;
+      
           & > header {
-            @apply grid grid-cols-[1fr_auto] items-baseline;
-
-            /* Company Name */
+            @apply grid grid-cols-1 mb-2;
+      
             & > h1 {
-              @apply text-xl font-bold;
+              @apply text-xl font-bold leading-tight;
             }
-
-            /* Position Title */
+      
             & > h2 {
-              @apply text-base italic text-gray-700;
+              @apply text-base italic text-gray-700 leading-tight;
             }
-
-            /* Date */
+      
             & > .date {
-              @apply text-sm font-light text-right text-gray-600;
+              @apply text-sm font-light text-left text-gray-600 leading-tight;
             }
           }
-
+      
           & > ul {
-            @apply pl-5 list-disc;
-
+            @apply pl-5 list-disc space-y-0;
+      
             & > li {
               @apply text-sm leading-snug;
-            }
-          }
-        }
-
-        /* Adjust for mobile portrait view */
-        @media screen and (max-width: 768px) {
-          & > section {
-            @apply grid-cols-1; /* Switch to a single-column layout */
-
-            & > header {
-              @apply flex flex-col items-start; /* Stack content vertically and align left */
-
-              /* Company Name */
-              & > h1 {
-                @apply text-lg font-bold mb-1; /* Bold and slightly smaller for mobile */
+              
+              &:nth-child(odd) {
+                @apply bg-white bg-opacity-50;
+              }
+      
+              &:nth-child(even) {
+                @apply bg-gray-50 bg-opacity-50;
               }
 
-              /* Position Title */
-              & > h2 {
-                @apply text-sm italic text-gray-700 mb-1; /* Smaller and italicized for consistency */
-              }
-
-              /* Date */
-              & > .date {
-                @apply text-sm font-light text-gray-600 mb-2; /* Align dates with the rest */
-              }
-            }
-
-            & > ul {
-              @apply pl-5 list-disc; /* Keep bulleted lists consistent */
-              & > li {
-                @apply text-sm leading-relaxed mb-1; /* Maintain spacing and readability */
-              }
+              @apply py-1 px-2 rounded;
             }
           }
         }
       }
-
-      /* Projects section styling */
+      
       &.projects-section .section-content {
         & > .project-entry {
           @apply mb-6 pb-4 border-b border-gray-300;
 
-          /* Project Header */
           & .project-header {
-            @apply flex justify-between items-baseline mb-2;
+            @apply flex flex-col gap-y-1 mb-2;
 
             & .project-name {
               @apply text-xl font-bold;
             }
 
             & .project-date {
-              @apply text-sm font-light text-gray-600;
+              @apply text-sm font-light text-left text-gray-600;
             }
           }
 
-          /* Project Description */
           & .project-description {
             @apply text-sm mb-2;
           }
 
-          /* Project Highlights */
           & .project-highlights ul {
             @apply list-disc pl-5;
 
@@ -283,7 +188,6 @@ body {
             }
           }
 
-          /* Project Link */
           & .project-link {
             @apply mt-2;
 
@@ -292,7 +196,6 @@ body {
             }
           }
 
-          /* Project Image */
           & .project-image {
             @apply mt-4;
 
@@ -306,69 +209,245 @@ body {
   }
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
+/* Utility classes */
+.centered-section {
+  @apply flex justify-center items-center mt-4;
+}
+
+.centered {
+  @apply italic text-center text-gray-600;
+}
+
+.print-button-section {
+  @apply flex justify-center mt-6;
+
+  #printButton {
+    @apply px-4 py-2 bg-blue-600 text-white rounded shadow-lg hover:bg-blue-700 transition duration-300;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
   html {
-    font-size: 12pt; /* Reduce font size on smaller screens */
+    font-size: 14pt;
   }
 
   body {
-    @apply max-w-full px-4; /* Ensure full width on mobile */
-  }
+    @apply max-w-screen-lg mx-auto;
 
-  /* Adjust header for mobile */
-  & > header {
-    @apply flex flex-col items-center;
-
-    & > h1 {
-      @apply text-center mb-2;
-    }
-
-    & > address {
-      @apply text-center w-full; /* Center align address */
-    }
-  }
-
-  main {
-    @apply px-4; /* Add padding to content */
-  }
-
-  /* Adjust sections for mobile */
-  .section {
-    @apply grid grid-cols-1 gap-y-4;
-
-    & > .section-title {
-      @apply text-center;
-    }
-
-    & > .section-content {
-      @apply col-span-1; /* Ensure full width content */
-    }
-
-    .skills-section .section-content {
-      @apply grid grid-cols-1; /* Single column for skills on mobile */
-    }
-
-    .skills-section .section-content > div {
-      @apply border-t pt-4; /* Add separation between items */
-    }
-
-    .skills-section .section-content > div > header {
-      @apply text-center; /* Center-align section headers on mobile */
-    }
-
-    .skills-section .section-content > div > p {
-      @apply text-left; /* Keep content left-aligned */
-    }
-
-    .projects-section .project-entry {
-      & .project-header {
-        @apply flex-col text-center; /* Stack project name and date */
+    & > header {
+      @apply grid grid-cols-[1fr_auto] items-start;
+      
+      & > h1 {
+        @apply text-3xl;
       }
 
-      & .project-highlights ul {
-        @apply pl-4; /* Adjust padding for mobile */
+      & > h2 {
+        @apply col-start-1;
+      }
+
+      & > address {
+        @apply row-span-2 self-center;
+        
+        & > a {
+          @apply justify-end text-right mb-1;
+        }
+      }
+    }
+
+    & > main {
+      & > .section {
+        @apply grid-cols-[8rem_1fr] gap-x-4;
+
+        & > .section-title {
+          @apply text-lg font-light uppercase border-b-0 pb-0 mb-0;
+        }
+      
+        &.skills-section .section-content {
+          @apply grid-cols-2;
+        }
+
+        &.experience-section .section-content > section > header {
+          @apply grid-cols-[1fr_auto] items-start; 
+    
+          & > .date {
+            @apply text-right mt-1; 
+          }
+        }
+
+        &.projects-section .section-content .project-header {
+          @apply flex-row justify-between items-baseline;
+
+          & .project-date {
+            @apply text-right;
+          }
+        }
       }
     }
   }
+}
+
+@media print {
+  @page {
+    margin: 0.25in;
+  }
+
+  html {
+    font-size: 10pt;
+  }
+
+  body {
+    margin: 0 !important;
+    @apply max-w-none;
+    
+    & > header {
+      @apply grid grid-cols-[1fr_auto] items-start;
+      
+      & > h1 {
+        @apply text-xl;
+      }
+
+      & > h2 {
+        @apply col-start-1 text-base;
+      }
+
+      & > address {
+        @apply row-span-2 self-center text-xs;
+        
+        & > a {
+          @apply justify-end text-right mb-1;
+        }
+      }
+    }
+
+    & > main {
+      & > .section {
+        & > .section-title {
+          @apply text-base font-semibold;
+        }
+
+        &.skills-section .section-content {
+          @apply grid-cols-2;
+          
+          & > div {
+            @apply w-full;
+            
+            & > header {
+              @apply text-sm font-semibold mb-1;
+            }
+            
+            & > p {
+              @apply text-xs p-1;
+              
+              &:nth-child(odd) {
+                background-color: #f3f4f6 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              &:nth-child(even) {
+                background-color: #f9fafb !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+            }
+          }
+        }
+
+        &.experience-section .section-content > section {
+          @apply mb-2 p-2;
+          
+          & > header {
+            & > h1 {
+              @apply text-base font-bold leading-tight;
+            }
+            
+            & > h2 {
+              @apply text-sm italic text-gray-700 leading-tight;
+            }
+            
+            & > .date {
+              @apply text-xs font-light text-gray-600 leading-tight;
+            }
+          }
+          
+          & > ul {
+            @apply space-y-0 pl-4;
+            
+            & > li {
+              @apply text-xs leading-tight py-0.5 px-1;
+            }
+          }
+        }
+
+        &.projects-section .section-content {
+          & > .project-entry {
+            @apply mb-4 pb-2;
+
+            & .project-header {
+              & .project-name {
+                @apply text-base font-bold;
+              }
+
+              & .project-date {
+                @apply text-xs font-light;
+              }
+            }
+
+            & .project-description {
+              @apply text-xs mb-1;
+            }
+
+            & .project-highlights ul > li {
+              @apply text-xs leading-tight mb-0.5;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  ul {
+    padding-left: 1rem !important;
+
+    li {
+      padding-left: 0.25rem !important;
+    }
+  }
+
+  .print-button-section {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    color: black !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+  .projects-section .section-content .project-link a::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt; /* Adjust the size if needed */
+    color: black; /* Ensure the URL is black in print */
+    font-style: normal; /* Make sure it's not italic */
+  }
+}
+
+/* Print pagination control */
+.page-break-before {
+  page-break-before: always;
+}
+
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
 }
