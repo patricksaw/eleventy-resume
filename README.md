@@ -3,6 +3,7 @@
 
 A resume site built using [JSON Resume](https://jsonresume.org/), [Tailwind CSS](https://tailwindcss.com/), and [Eleventy](https://www.11ty.dev/) hosted on **Cloudflare Pages**.
 
+[SAMPLE SITE](https://patricksaw.github.io/eleventy-resume/example/index.html)
 ## Features
 
 - **JSON Resume**: All resume data is stored in a standardized [JSON Resume](https://jsonresume.org/) format for portability and flexibility.
