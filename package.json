@@ -3,25 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --watch --postcss",
+  "scripts": {    
     "build:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --postcss",
     "build": "npm run build:css && eleventy",
     "start": "npm run build:css && eleventy --serve",
     "deploy": "npm run build:css && eleventy && wrangler pages deploy public"
-    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "jsonresume-theme-bufferbloat": "^1.0.2",
-    "jsonresume-theme-elegant": "^1.16.1",
-    "jsonresume-theme-even": "^0.23.0",
-    "jsonresume-theme-paper": "^0.5.0",
-    "jsonresume-theme-paper-plus-plus": "^0.5.1",
-    "jsonresume-theme-relaxed": "^0.1.11"
+    "@11ty/eleventy": "^3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
