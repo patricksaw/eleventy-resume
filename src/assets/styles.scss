@@ -55,23 +55,23 @@ body {
         }
 
         &.github::before {
-          background-image: url('/assets/img/github.svg');
+          background-image: url('img/github.svg');
         }
 
         &.linkedin::before {
-          background-image: url('/assets/img/linkedin.svg');
+          background-image: url('img/linkedin.svg');
         }
 
         &.website::before {
-          background-image: url('/assets/img/website.svg');
+          background-image: url('img/website.svg');
         }
 
         &.phone::before {
-          background-image: url('/assets/img/phone.svg');
+          background-image: url('img/phone.svg');
         }
 
         &[href^="mailto:"]::before {
-          background-image: url('/assets/img/email.svg');
+          background-image: url('img/email.svg');
         }
       }
     }
