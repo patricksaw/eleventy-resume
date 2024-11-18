@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {    
     "build:css": "tailwindcss -i src/assets/styles.scss -o src/assets/styles.css --style=compressed --postcss",
+    "build:example": "npm run build:css && npx eleventy --output ./example",
     "build": "npm run build:css && eleventy",
     "start": "npm run build:css && eleventy --serve",
     "deploy": "npm run build:css && eleventy && wrangler pages deploy public"

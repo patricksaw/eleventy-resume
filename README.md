@@ -146,12 +146,13 @@ You will probably want to host your sweet resume/portfolio on a custom domain, s
 
 ## Scripts
 
-| Command              | Description                                             |
-|----------------------|---------------------------------------------------------|
-| `npm run build`      | Builds the site for production.                         |
-| `npm run start`      | Starts the local Eleventy development server.           |
-| `npm run build:css`  | Compiles the SCSS styles into Tailwind CSS.             |
-| `npm run watch:css`  | Watches for changes in SCSS files and rebuilds CSS.     |
+| Command                 | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| `npm run build`         | Builds the site for production.                         |
+| `npm run build:example` | Builds the example site to keep in the repo             |
+| `npm run start`         | Starts the local Eleventy development server.           |
+| `npm run build:css`     | Compiles the SCSS styles into Tailwind CSS.             |
+| `npm run watch:css`     | Watches for changes in SCSS files and rebuilds CSS.     |
 
 ---
 

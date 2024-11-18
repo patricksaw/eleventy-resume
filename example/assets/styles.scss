@@ -1,0 +1,458 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 12pt;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.striped {
+  background-color: gray;
+}
+
+body {
+  @apply max-w-full px-2 my-2 p-4 font-sans;
+
+  & > header {
+    @apply grid grid-cols-1 gap-4 p-2;
+
+    & > h1 {
+      @apply text-2xl font-bold;
+
+      & > span {
+        @apply text-base font-light;
+      }
+    }
+
+    & > h2 {
+      @apply text-lg font-normal text-gray-700;
+    }
+
+    & > address {
+      @apply w-full not-italic text-sm leading-relaxed;
+
+      & > a {
+        @apply flex items-center gap-2;
+
+        &.github::before,
+        &.linkedin::before,
+        &.website::before,  
+        &.phone::before,      
+        &[href^="mailto:"]::before {
+          content: "";
+          @apply inline-block w-4 h-4 bg-contain mr-1;
+        }
+
+        &.github::before {
+          background-image: url('/assets/img/github.svg');
+        }
+
+        &.linkedin::before {
+          background-image: url('/assets/img/linkedin.svg');
+        }
+
+        &.website::before {
+          background-image: url('/assets/img/website.svg');
+        }
+
+        &.phone::before {
+          background-image: url('/assets/img/phone.svg');
+        }
+
+        &[href^="mailto:"]::before {
+          background-image: url('/assets/img/email.svg');
+        }
+      }
+    }
+  }
+
+  & > main {
+    @apply grid gap-y-3 px-2;
+
+    & > .section {
+      @apply grid grid-cols-1 gap-y-2 border-t-2 border-blue-900 pt-3;
+
+      & > .section-title {
+        @apply text-xl font-semibold w-full border-b border-gray-300 pb-2 mb-4;
+      }
+
+      & > .section-content {
+        @apply w-full;
+      }
+
+      &.skills-section .section-content {
+        @apply grid grid-cols-1;
+
+        & > div {
+          @apply flex flex-col;
+
+          & > header {
+            @apply font-semibold mb-2 text-lg text-left;
+          }
+
+          & > p {
+            @apply text-sm text-left px-2 py-1 leading-none;
+
+            &:nth-child(odd) {
+              @apply bg-gray-100;
+            }
+
+            &:nth-child(even) {
+              @apply bg-gray-50;
+            }
+          }
+        }
+      }
+
+      &.experience-section .section-content {
+        & > section {
+          @apply grid mb-4 pb-2;
+          
+          &:nth-child(odd) {
+            @apply bg-gray-100;
+          }
+      
+          &:nth-child(even) {
+            @apply bg-gray-50;
+          }
+      
+          @apply p-4 rounded;
+      
+          & > header {
+            @apply grid grid-cols-1 mb-2;
+      
+            & > h1 {
+              @apply text-xl font-bold leading-tight;
+            }
+      
+            & > h2 {
+              @apply text-base italic text-gray-700 leading-tight;
+            }
+      
+            & > .date {
+              @apply text-sm font-light text-left text-gray-600 leading-tight;
+            }
+          }
+      
+          & > ul {
+            @apply pl-5 list-disc space-y-0;
+      
+            & > li {
+              @apply text-sm leading-snug;
+              
+              &:nth-child(odd) {
+                @apply bg-white bg-opacity-50;
+              }
+      
+              &:nth-child(even) {
+                @apply bg-gray-50 bg-opacity-50;
+              }
+
+              @apply py-1 px-2 rounded;
+            }
+          }
+        }
+      }
+      
+      &.projects-section .section-content {
+        & > .project-entry {
+          @apply mb-6 pb-4 border-b border-gray-300;
+
+          & .project-header {
+            @apply flex flex-col gap-y-1 mb-2;
+
+            & .project-name {
+              @apply text-xl font-bold;
+            }
+
+            & .project-date {
+              @apply text-sm font-light text-left text-gray-600;
+            }
+          }
+
+          & .project-description {
+            @apply text-sm mb-2;
+          }
+
+          & .project-highlights ul {
+            @apply list-disc pl-5;
+
+            & > li {
+              @apply text-sm leading-snug mb-1;
+            }
+          }
+
+          & .project-link {
+            @apply mt-2;
+
+            & a {
+              @apply text-blue-600 underline;
+            }
+          }
+
+          & .project-image {
+            @apply mt-4;
+
+            img {
+              @apply w-full h-auto rounded shadow-lg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Utility classes */
+.centered-section {
+  @apply flex justify-center items-center mt-4;
+}
+
+.centered {
+  @apply italic text-center text-gray-600;
+}
+
+.print-button-section {
+  @apply flex justify-center mt-6;
+
+  #printButton {
+    @apply px-4 py-2 bg-blue-600 text-white rounded shadow-lg hover:bg-blue-700 transition duration-300;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 14pt;
+  }
+
+  body {
+    @apply max-w-screen-lg mx-auto;
+
+    & > header {
+      @apply grid grid-cols-[1fr_auto] items-start;
+      
+      & > h1 {
+        @apply text-3xl;
+      }
+
+      & > h2 {
+        @apply col-start-1;
+      }
+
+      & > address {
+        @apply row-span-2 self-center;
+        
+        & > a {
+          @apply justify-end text-right mb-1;
+        }
+      }
+    }
+
+    & > main {
+      & > .section {
+        @apply grid-cols-[8rem_1fr] gap-x-4;
+
+        & > .section-title {
+          @apply text-lg font-light uppercase border-b-0 pb-0 mb-0;
+        }
+      
+        &.skills-section .section-content {
+          @apply grid-cols-2;
+        }
+
+        &.experience-section .section-content > section > header {
+          @apply grid-cols-[1fr_auto] items-start; 
+    
+          & > .date {
+            @apply text-right mt-1; 
+          }
+        }
+
+        &.projects-section .section-content .project-header {
+          @apply flex-row justify-between items-baseline;
+
+          & .project-date {
+            @apply text-right;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media print {
+  @page {
+    margin: 0.25in;
+  }
+
+  html {
+    font-size: 10pt;
+  }
+
+  body {
+    margin: 0 !important;
+    @apply max-w-none;
+    
+    & > header {
+      @apply grid grid-cols-[1fr_auto] items-start;
+      
+      & > h1 {
+        @apply text-xl;
+      }
+
+      & > h2 {
+        @apply col-start-1 text-base;
+      }
+
+      & > address {
+        @apply row-span-2 self-center text-xs;
+        
+        & > a {
+          @apply justify-end text-right mb-1;
+        }
+      }
+    }
+
+    & > main {
+      & > .section {
+        & > .section-title {
+          @apply text-base font-semibold;
+        }
+
+        &.skills-section .section-content {
+          @apply grid-cols-2;
+          
+          & > div {
+            @apply w-full;
+            
+            & > header {
+              @apply text-sm font-semibold mb-1;
+            }
+            
+            & > p {
+              @apply text-xs p-1;
+              
+              &:nth-child(odd) {
+                background-color: #f3f4f6 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              
+              &:nth-child(even) {
+                background-color: #f9fafb !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+            }
+          }
+        }
+
+        &.experience-section .section-content > section {
+          @apply mb-2 p-2;
+          
+          & > header {
+            & > h1 {
+              @apply text-base font-bold leading-tight;
+            }
+            
+            & > h2 {
+              @apply text-sm italic text-gray-700 leading-tight;
+            }
+            
+            & > .date {
+              @apply text-xs font-light text-gray-600 leading-tight;
+            }
+          }
+          
+          & > ul {
+            @apply space-y-0 pl-4;
+            
+            & > li {
+              @apply text-xs leading-tight py-0.5 px-1;
+            }
+          }
+        }
+
+        &.projects-section .section-content {
+          & > .project-entry {
+            @apply mb-4 pb-2;
+
+            & .project-header {
+              & .project-name {
+                @apply text-base font-bold;
+              }
+
+              & .project-date {
+                @apply text-xs font-light;
+              }
+            }
+
+            & .project-description {
+              @apply text-xs mb-1;
+            }
+
+            & .project-highlights ul > li {
+              @apply text-xs leading-tight mb-0.5;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  ul {
+    padding-left: 1rem !important;
+
+    li {
+      padding-left: 0.25rem !important;
+    }
+  }
+
+  .print-button-section {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    color: black !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+  .projects-section .section-content .project-link a::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt; /* Adjust the size if needed */
+    color: black; /* Ensure the URL is black in print */
+    font-style: normal; /* Make sure it's not italic */
+  }
+}
+
+/* Print pagination control */
+.page-break-before {
+  page-break-before: always;
+}
+
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-inside-avoid {
+  page-break-inside: avoid;
+}
